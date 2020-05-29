@@ -1,0 +1,51 @@
+backend: tensorflow
+class_name: Sequential
+config:
+- class_name: Embedding
+  config:
+    activity_regularizer: null
+    batch_input_shape: !!python/tuple [null, 338]
+    dtype: float32
+    embeddings_constraint: null
+    embeddings_initializer:
+      class_name: RandomUniform
+      config: {maxval: 0.05, minval: -0.05, seed: null}
+    embeddings_regularizer: null
+    input_dim: !!python/object/apply:numpy.core.multiarray.scalar
+    - !!python/object/apply:numpy.dtype
+      args: [i4, 0, 1]
+      state: !!python/tuple [3, <, null, null, null, -1, -1, 0]
+    - !!binary |
+      oAAAAA==
+    input_length: 338
+    mask_zero: false
+    name: embedding_1
+    output_dim: 256
+    trainable: true
+- class_name: CuDNNLSTM
+  config:
+    activity_regularizer: null
+    bias_constraint: null
+    bias_initializer:
+      class_name: Zeros
+      config: {}
+    bias_regularizer: null
+    go_backwards: false
+    kernel_constraint: null
+    kernel_initializer:
+      class_name: VarianceScaling
+      config: {distribution: uniform, mode: fan_avg, scale: 1.0, seed: null}
+    kernel_regularizer: null
+    name: cu_dnnlstm_1
+    recurrent_constraint: null
+    recurrent_initializer:
+      class_name: Orthogonal
+      config: {gain: 1.0, seed: null}
+    recurrent_regularizer: null
+    return_sequences: false
+    return_state: false
+    stateful: false
+    trainable: true
+    unit_forget_bias: true
+    units: 600
+keras_version: 2.2.2
